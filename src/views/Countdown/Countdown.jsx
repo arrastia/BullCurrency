@@ -1,19 +1,31 @@
-import React from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 
 import './Countdown.css';
 
-import logo from 'logo.svg';
+import { CountdownUtils } from './.tools/Utils/CountdownUtils';
 
-export const Countdown = () => (
-  <div className="App">
-    <header className="App-header">
-      <img src={logo} className="App-logo" alt="logo" />
-      <p>
-        Edit <code>src/App.js</code> and save to reload.
-      </p>
-      <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-        Learn React
-      </a>
-    </header>
-  </div>
-);
+export const Countdown = () => {
+  const [timeLeft, setTimeLeft] = useState(CountdownUtils.calculateTimeLeft());
+
+  useEffect(() => {
+    setInterval(() => {
+      setTimeLeft(CountdownUtils.calculateTimeLeft());
+    }, 1000);
+  });
+
+  const timer = [];
+
+  Object.keys(timeLeft).forEach((timeElement, index) => {
+    timer.push(
+      <li key={index}>
+        {timeElement}: {timeLeft[timeElement]}
+      </li>
+    );
+  });
+
+  return (
+    <Fragment>
+      <ul>{timer}</ul>
+    </Fragment>
+  );
+};
