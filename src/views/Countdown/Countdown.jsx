@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from 'react';
 
-import './Countdown.css';
+import { Styles } from './Countdown.styles';
 
 import { CountdownUtils } from './.tools/Utils/CountdownUtils';
 
@@ -16,16 +16,19 @@ export const Countdown = () => {
   const timer = [];
 
   Object.keys(timeLeft).forEach((timeElement, index) => {
+    if (!timeLeft[timeElement]) return;
+
     timer.push(
-      <li key={index}>
-        {timeElement}: {timeLeft[timeElement]}
-      </li>
+      <Styles.TimeInterval key={index}>
+        <Styles.TimeElement id={timeElement}>{timeLeft[timeElement]}</Styles.TimeElement>
+        {timeElement}
+      </Styles.TimeInterval>
     );
   });
 
   return (
     <Fragment>
-      <ul>{timer}</ul>
+      {timer.length ? <Styles.Countdown>{timer}</Styles.Countdown> : <Styles.TimeOver>Still working</Styles.TimeOver>}
     </Fragment>
   );
 };
