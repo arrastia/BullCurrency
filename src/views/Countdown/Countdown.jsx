@@ -2,6 +2,8 @@ import React, { Fragment, useEffect, useState } from 'react';
 
 import { Styles } from './Countdown.styles';
 
+import { Dialog } from 'views/.components/Dialog/Dialog';
+
 import { CountdownUtils } from './.tools/Utils/CountdownUtils';
 
 export const Countdown = () => {
