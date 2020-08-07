@@ -30,6 +30,7 @@ export const Countdown = () => {
 
   return (
     <Fragment>
+      <Dialog />
       {timer.length ? <Styles.Countdown>{timer}</Styles.Countdown> : <Styles.TimeOver>Still working</Styles.TimeOver>}
     </Fragment>
   );
