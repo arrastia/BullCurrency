@@ -2,6 +2,7 @@ import React, { Fragment, useEffect, useState } from 'react';
 
 import { Styles } from './Countdown.styles';
 
+import { Dialog } from 'views/.components/Dialog';
 import { SupportUs } from './.components/SupportUs';
 
 import { CountdownUtils } from './.tools/Utils/CountdownUtils';
@@ -31,6 +32,7 @@ export const Countdown = () => {
   return (
     <Fragment>
       {timer.length ? <Styles.Countdown>{timer}</Styles.Countdown> : <Styles.TimeOver>Still working</Styles.TimeOver>}
+      <Dialog />
       <SupportUs />
     </Fragment>
   );
